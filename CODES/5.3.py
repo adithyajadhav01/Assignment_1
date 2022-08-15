@@ -1,16 +1,16 @@
 import numpy as np
-import scipy
-
-def u(n):
-    if n >= 0:
-        return 1
-    else:
-        return 0
-
-def h(n):
-    return u(n) * (-0.5)**n + u(n-2) * (-0.5)**(n-2) 
+import matplotlib.pyplot as plt
 
 
-vec_h = scipy.vectorize(h, otypes=[float])
-N = np.arange(100)
-print(np.sum(vec_h(N)))
+
+n = np.arange(10)
+fn=(-1/2)**n
+hn1=np.pad(fn, (0,2), 'constant', constant_values=(0))
+hn2=np.pad(fn, (2,0), 'constant', constant_values=(0))
+plt.stem(np.arange(12), hn1+hn2)
+plt.title('Filter Impulse Response')
+plt.xlabel('$n$')
+plt.ylabel('$h(n)$')
+plt.grid()# minor
+
+plt.show()
