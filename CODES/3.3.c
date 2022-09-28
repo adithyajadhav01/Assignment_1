@@ -2,6 +2,7 @@
 
 #define N 20
 
+
 double x(int n) {
 	if (n < 0 || n > 5) return 0;
 	else if (n < 4) return n + 1;
@@ -16,11 +17,9 @@ double y(int n) {
 }
 
 int main() {
-	FILE *fp = fopen("filter_output.dat", "w");
+	FILE *fp = fopen("/Users/adithyaram/Desktop/Sound_Assignment/filter_output.dat", "w");
 	for (int i = 0; i < N; i++) {
-		fprintf(fp, "%lf\n", y(i));
-	    
+		printf("%lf\n", y(i));	    
 	}
-	fclose(fp);
 	return 0;
 }
